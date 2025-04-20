@@ -23,7 +23,7 @@
 /.env.local.php
 /public/bundles
 /var/
-/vendor/
+#/vendor/
 ###< symfony/framework-bundle ###
 
 ###> friendsofphp/php-cs-fixer ###

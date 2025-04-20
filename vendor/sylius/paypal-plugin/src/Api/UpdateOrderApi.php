@@ -1,0 +1,77 @@
+<?php
+
+/*
+ * This file is part of the Sylius package.
+ *
+ * (c) Sylius Sp. z o.o.
+ *
+ * For the full copyright and license information, please view the LICENSE
+ * file that was distributed with this source code.
+ */
+
+declare(strict_types=1);
+
+namespace Sylius\PayPalPlugin\Api;
+
+use Sylius\Component\Core\Model\AdjustmentInterface;
+use Sylius\Component\Core\Model\OrderInterface;
+use Sylius\Component\Core\Model\PaymentInterface;
+use Sylius\PayPalPlugin\Client\PayPalClientInterface;
+use Sylius\PayPalPlugin\Model\PayPalPurchaseUnit;
+use Sylius\PayPalPlugin\Provider\PaymentReferenceNumberProviderInterface;
+use Sylius\PayPalPlugin\Provider\PayPalItemDataProviderInterface;
+
+final readonly class UpdateOrderApi implements UpdateOrderApiInterface
+{
+    public function __construct(
+        private PayPalClientInterface $client,
+        private PaymentReferenceNumberProviderInterface $paymentReferenceNumberProvider,
+        private PayPalItemDataProviderInterface $payPalItemsDataProvider,
+    ) {
+    }
+
+    public function update(
+        string $token,
+        string $orderId,
+        PaymentInterface $payment,
+        string $referenceId,
+        string $merchantId,
+    ): array {
+        /** @var OrderInterface $order */
+        $order = $payment->getOrder();
+
+        $payPalItemData = $this->payPalItemsDataProvider->provide($order);
+
+        $shippingDiscount = $order->getAdjustmentsTotalRecursively(
+            AdjustmentInterface::ORDER_SHIPPING_PROMOTION_ADJUSTMENT,
+        );
+
+        $data = new PayPalPurchaseUnit(
+            $referenceId,
+            $this->paymentReferenceNumberProvider->provide($payment),
+            (string) $order->getCurrencyCode(),
+            (int) $payment->getAmount(),
+            $order->getShippingTotal() - $shippingDiscount,
+            (float) $payPalItemData['total_item_value'],
+            (float) $payPalItemData['total_tax'],
+            $order->getOrderPromotionTotal(),
+            $merchantId,
+            (array) $payPalItemData['items'],
+            $order->isShippingRequired(),
+            $order->getShippingAddress(),
+            shippingDiscountValue: $shippingDiscount,
+        );
+
+        return $this->client->patch(
+            sprintf('v2/checkout/orders/%s', $orderId),
+            $token,
+            [
+                [
+                    'op' => 'replace',
+                    'path' => sprintf('/purchase_units/@reference_id==\'%s\'', $referenceId),
+                    'value' => $data->toArray(),
+                ],
+            ],
+        );
+    }
+}

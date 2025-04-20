@@ -1,0 +1,81 @@
+.thumb-img {
+    height: 80px;
+    cursor: pointer;
+    border: 2px solid transparent;
+    border-radius: 8px;
+    object-fit: cover;
+  }
+
+  .categorie_stock{
+    display: flex;
+    flex-direction: row;
+    flex-wrap: nowrap;
+    justify-content: space-between;
+    align-items: stretch;
+    align-content: stretch;
+  }
+
+  label[for="sylius_shop_add_to_cart_cartItem_quantity"] {
+    display: none;
+  }
+
+  form[name="sylius_shop_add_to_cart"] {
+    display: flex;
+	flex-direction: row;
+	flex-wrap: nowrap;
+	justify-content: space-between;
+	align-items: stretch;
+	align-content: stretch;
+  }
+
+
+  #add-to-cart-button{
+    border: var(--Orange, #FF780F);
+    float: right;
+    display: flex;
+    padding: 18px 36px;
+    justify-content: center;
+    align-items: center;
+    gap: 12px;
+    border-radius: 6px;
+    background: var(--Orange, #FF780F);
+    box-shadow: 0px 2px 4px 0px rgba(69, 21, 5, 0.09);
+    color: var(--White, #FFF);
+    text-align: center;
+    font-family: Inter;
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 700;
+    line-height: normal;
+    cursor: pointer;
+    transition: background-color 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
+    width:166%;
+}
+
+#sylius_shop_add_to_cart_cartItem_quantity{
+  width:40%
+}
+
+.single-page .icon-box {
+  width: 40px;
+  height: 40px;
+  font-size: 20px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+#offcanvasCart{
+  z-index:3000;
+}
+.slider-home{
+  padding-top:120px;
+}
+
+#main-menu{
+  position: fixed !important;
+    z-index: 2000;
+    background-color: #ffffff;
+    margin: 0 auto;
+    width: 100%;
+}

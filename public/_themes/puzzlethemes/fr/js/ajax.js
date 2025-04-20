@@ -51,8 +51,8 @@ function addEvent(el,e,fc){ return (el ? (window.addEventListener ? el.addEventL
 function removeEvent(el,e,fc){ return (el ? (window.removeEventListener ? el.removeEventListener(e,fc,false) : el.detachEvent('on'+e,fc)) : false); }
 
 function clic_cubecoeur_fdp(i) {
-	if (i.attr('src')=='/_themes/puzzlethemes/fr/images/coeur.png') {
-		i.attr('src','/_themes/puzzlethemes/fr/images/coeur_gris.png');
+	if (i.attr('src')=='/images/coeur.png') {
+		i.attr('src','/images/coeur_gris.png');
 		var title = local_title_coeur_gris;
 		i.attr('title',title);
 		i.attr('alt',title);
@@ -61,10 +61,10 @@ function clic_cubecoeur_fdp(i) {
 		var tt = parseInt(t[1].split(')')[0])-1;
 		$('#head_a_maliste').html(t[0]+'('+tt+')');
 		$.post('/websvc/maliste.ws.php',{del:1,id:i.data('rel')},function(data){
-
+				
 				},'json');
 	} else {
-		i.attr('src','/_themes/puzzlethemes/fr/images/coeur.png');
+		i.attr('src','/images/coeur.png');
 		var title = local_title_coeur_rouge;
 		i.attr('title',title);
 		i.attr('alt',title);
@@ -73,7 +73,7 @@ function clic_cubecoeur_fdp(i) {
 		var tt = parseInt(t[1].split(')')[0])+1;
 		$('#head_a_maliste').html(t[0]+'('+tt+')');
 		$.post('/websvc/maliste.ws.php',{add:1,id:i.data('rel')},function(data){
-
+	
 				},'json');
 	}
 }
@@ -83,8 +83,8 @@ function dialogAttente() {
 	if (!$('#dialog-page-load').length) {
 		$('<div id="dialog-page-load"></div>').appendTo('body');
 	}
-	$('#dialog-page-load').html('<p style="text-align:center;display:block;color:#000;"><img src="/_themes/puzzlethemes/fr/images/ajax-loader.gif"/><br/>'+local_wait+'</p>');
-	$.colorbox({inline:true, transition:'none', href:'#dialog-page-load', closeButton:false, width:"350", height:"150"});
+	$('#dialog-page-load').html('<p style="text-align:center;display:block;color:#000;"><img src="/images/ajax-loader.gif"/><br/>'+local_wait+'</p>');
+	$.colorbox({inline:true, transition:'none', href:'#dialog-page-load', closeButton:false, width:"350", height:"150"});	
 }
 
 function closeDialogAttente() {
@@ -124,7 +124,7 @@ $(function () { $("[data-toggle = 'tooltip']").tooltip(); });
 
 
 function majButtonAddItem(idproduit){
-	$('.cubprodpanier-' + idproduit).attr('src','/_themes/puzzlethemes/fr/images/btn-rd-v.jpg');
+	$('.cubprodpanier-' + idproduit).attr('src','/images/btn-rd-v.jpg');
 }
 
 function change_qte(button,form){
@@ -132,14 +132,14 @@ function change_qte(button,form){
     var qte    = parseInt(form.qte.value);
     var action = button.name;
     if(qte > 1 || action != 'minus'){
-
+		
 		dialogAttente();
-
+		
         function viewResponse(response){
             var data = eval('('+response.responseText+')');
-            if(qte == data.qte){
+            if(qte == data.qte){ 
 				closeDialogAttente();
-				alert(data.msgE_max);
+				alert(data.msgE_max); 
 			}else{
 				window.location="/caddie/";
 			}
@@ -193,7 +193,7 @@ function change_qte_select(selectElement) {
 function PopupCentrer(page,largeur,hauteur,btclose) {
 	if (btclose=='0') { btclose = 0; } else { btclose = 1; }
 	/*$.fancybox.open({
-		'href' 				: page,
+		'href' 				: page, 
 		'closeBtn'			: btclose,
 		'type'				: 'iframe',
 		'padding'			: 10,
@@ -205,9 +205,9 @@ function PopupCentrer(page,largeur,hauteur,btclose) {
 				}
 			}
 	});
-
+	
 	$(".fancybox-wrap").css('background-color', '#ffffff');*/
-
+	
 	$.colorbox({width:largeur,height:hauteur,href:page,overlayClose:false,escKey:false});
 }
 
@@ -216,12 +216,12 @@ function AccentToNoAccent(str){
 	'\320','\321','\322','\323','\324','\325','\326','\330','\331','\332','\333','\334','\335','\336','\337', '\340','\341','\342','\343',
 	'\344','\345','\346','\347','\350','\351','\352','\353','\354','\355','\356','\357','\360','\361', '\362','\363','\364','\365','\366',
 	'\370','\371','\372','\373','\374','\375','\376','\377');
-
+	
 	var spec = new Array('A','A','A','A','A','A','A','C','E','E','E','E','I','I','I','I', 'D','N','O','O','O','0','O','O','U','U','U','U',
 	'Y','b','s', 'a','a','a','a','a','a','a','c','e','e','e','e','i','i','i','i','d','n', 'o','o','o','o','o','o','u','u','u','u','y','b','y');
 
-	for(var i=0,max=spec.length;i<max;++i){
-		str = str.replace(norm[i],spec[i]);
+	for(var i=0,max=spec.length;i<max;++i){ 
+		str = str.replace(norm[i],spec[i]); 
 	}
 	return str;
 }
@@ -230,7 +230,7 @@ function setCookie(c_name,value,exdays)
 {
       var exdate=new Date();
       exdate.setDate(exdate.getDate() + exdays);
-      var c_value=escape(value) +
+      var c_value=escape(value) + 
         ((exdays==null) ? "" : ("; expires="+exdate.toUTCString()));
       document.cookie=c_name + "=" + c_value +  "; path=/";
 }
@@ -241,19 +241,19 @@ function filtre_prix_init(pmin,pmax) {
 	   min: pmin, max: pmax,
 	   values: [ pmin, pmax ],
 	   slide: function( event, ui ) {
-
+	   
 			$( "#filtre_prix_slider_amount_min" ).val( localFitrePrixDevise0 + Math.floor(ui.values[0]) + localFitrePrixDevise  );
 		    $( "#filtre_prix_slider_amount_max" ).val( localFitrePrixDevise0 + Math.ceil(ui.values[1]) + localFitrePrixDevise  );
-
+			
 			if ($( "#filtre_prix_slider_amount_min" ).val().split(' ')[0] == Math.floor(pmin)) {
 				$( "#filtre_prix_slider_amount_min" ).val( localFitrePrixDevise0 + pmin.toFixed(2) + localFitrePrixDevise  );
 			}
-
+			
 		    var nbprod = 0;
-		    for (i=0;i<slidePrixTable.length;i++) {
+		    for (i=0;i<slidePrixTable.length;i++) { 
 				if (slidePrixTable[i] >= ui.values[0].toFixed(1) && slidePrixTable[i] <= ui.values[1].toFixed(2)) {
-					nbprod++;
-				}
+					nbprod++; 
+				} 
 			}
 			if (nbprod>1) { nbprod += ' '+localProduits; } else { nbprod += ' '+localProduit; }
 			$('#filtre_prix_cpt').html(nbprod);
@@ -267,26 +267,26 @@ function filtre_prix_init(pmin,pmax) {
 
 
 function filtre_prix_init_mobile(pmin,pmax) {
-
+	
 	$( "#filtre_prix_slider_mobile").slider({
 	   range: true, step: 0.001,
 	   min: pmin, max: pmax,
 	   values: [ pmin, pmax ],
 	   slide: function( event, ui ) {
-
+		
 			$( "#filtre_prix_slider_amount_min_mobile" ).val(localFitrePrixDevise0 +  Math.floor(ui.values[0]) + localFitrePrixDevise  );
 		    $( "#filtre_prix_slider_amount_max_mobile" ).val( localFitrePrixDevise0 + Math.ceil(ui.values[1]) + localFitrePrixDevise  );
-
+			
 			if ($( "#filtre_prix_slider_amount_min_mobile" ).val().split(' ')[0] == Math.floor(pmin)) {
 				$( "#filtre_prix_slider_amount_min_mobile" ).val( localFitrePrixDevise0 + pmin.toFixed(2) + localFitrePrixDevise  );
 			}
-
+			
 		    var nbprod = 0;
-
-		    for (i=0;i<slidePrixTable.length;i++) {
+			
+		    for (i=0;i<slidePrixTable.length;i++) { 
 				if (slidePrixTable[i] >= ui.values[0].toFixed(1) && slidePrixTable[i] <= ui.values[1].toFixed(2)) {
-					nbprod++;
-				}
+					nbprod++; 
+				} 
 			}
 			if (nbprod>1) { nbprod += ' '+localProduits; } else { nbprod += ' '+localProduit; }
 			$('#filtre_prix_cpt_mobile').html(nbprod);
@@ -360,7 +360,7 @@ function addproduitbundle(idproduit,bundle) {
 		}
 		dialogAttente();
 		RequestAjax.getAjax("/websvc/additem.ws.php?idproduit="+idproduit+"&bundle="+bundle+"&qte="+qte+"&nbencaddie="+incart+"&nbstock="+nbstock+"&nocache="+Math.random(),viewResponse);
-}
+}	
 
 function addproduitz(idproduit, qte, incart, nbstock) {
 	if (idSite == 2) {
@@ -422,7 +422,7 @@ function addproduitz(idproduit, qte, incart, nbstock) {
 						delay: 5000,
 						icon_type: 'image',
 						template: '<div style="padding:14px;" data-notify="container" class="col-xs-11 col-sm-3 success-message-add-panier" role="success">' +
-							'<img data-notify="icon" src="/_themes/puzzlethemes/fr/images/check-circle-add-panier.svg" >' +
+							'<img data-notify="icon" src="/images/check-circle-add-panier.svg" >' +
 							'<span style="color:#035D0C;font-size: 12px;" data-notify="message">C\'est dans la boîte !</span>' +
 						'</div>'
 					});
@@ -441,14 +441,14 @@ function addproduitz(idproduit, qte, incart, nbstock) {
 					};
 					var isMembre = document.getElementById('isMembre').value === '1';
    				var prix = isMembre ? produit.prix_membre : produit.prixclient;
-
+					
 					$('#total-produit-panier').html(data.nbtotal);
 					$('#total-price-panier').html(data.totalPanier.toFixed(2).replace('.', ',') + '€');
 					updateCartModal(idproduit, qte, produit, prix);
 				}
 			}
 		}
-	}
+	}	
 	RequestAjax.getAjax("/websvc/additem.ws.php?idproduit=" + idproduit + "&qte=" + qte + "&nbencaddie=" + incart + "&nbstock=" + nbstock + "&nocache=" + Math.random(), viewResponse);
 }
 
@@ -486,14 +486,14 @@ function addproduitfdp(idproduit,qte,incart,nbstock) {
 				window.location.href = '/caddie/';
 
 			}
-		}
+		}	
 	RequestAjax.getAjax("/websvc/additem.ws.php?idproduit="+idproduit+"&qte="+qte+"&nbencaddie="+incart+"&nbstock="+nbstock+"&nocache="+Math.random(),viewResponse);
 }
 
 
 function addproduitzLotColle(stockProd,idproduitProd,nbencaddieProd,qteProd,stockColle,idproduitColle,nbencaddieColle,qteColle) {
 
-
+	
 		function viewResponseProduit(response){
 
 			var data = eval('('+response.responseText+')');
@@ -512,8 +512,8 @@ function addproduitzLotColle(stockProd,idproduitProd,nbencaddieProd,qteProd,stoc
 				}
 
 			}
-		}
-
+		}	
+		
 		function viewResponseColle(response){
 
 			var data = eval('('+response.responseText+')');
@@ -532,25 +532,25 @@ function addproduitzLotColle(stockProd,idproduitProd,nbencaddieProd,qteProd,stoc
 				}
 
 			}
-		}
+		}			
 	// on ajoute le produit
 	RequestAjax.getAjax("/websvc/additem.ws.php?idproduit="+idproduitProd+"&qte="+qteProd+"&nbencaddie="+nbencaddieProd+"&nbstock="+stockProd+"&nocache="+Math.random(),viewResponseProduit);
 	// on ajoute la colle
-	RequestAjax.getAjax("/websvc/additem.ws.php?idproduit="+idproduitColle+"&qte="+qteColle+"&nbencaddie="+nbencaddieColle+"&nbstock="+stockColle+"&nocache="+Math.random(),viewResponseColle);
+	RequestAjax.getAjax("/websvc/additem.ws.php?idproduit="+idproduitColle+"&qte="+qteColle+"&nbencaddie="+nbencaddieColle+"&nbstock="+stockColle+"&nocache="+Math.random(),viewResponseColle);	
 	// message ok
 	var listeProduit = idproduitProd+','+idproduitColle;
 	$(document).ekkoLightbox({
-
+		
 		remote:'/infos/popup.php?pg=adpGroupe&listeProduit='+listeProduit
-	});
-
+	});	
+	
 }
 
 
 
 function addproduitzLotColleBdt(stockProd,idproduitProd,nbencaddieProd,qteProd,stockColle,idproduitColle,nbencaddieColle,qteColle,stockBdt,idproduitBdt,nbencaddieBdt,qteBdt) {
 
-
+	
 		function viewResponseProduit(response){
 
 			var data = eval('('+response.responseText+')');
@@ -569,8 +569,8 @@ function addproduitzLotColleBdt(stockProd,idproduitProd,nbencaddieProd,qteProd,s
 				}
 
 			}
-		}
-
+		}	
+		
 		function viewResponseColle(response){
 
 			var data = eval('('+response.responseText+')');
@@ -589,7 +589,7 @@ function addproduitzLotColleBdt(stockProd,idproduitProd,nbencaddieProd,qteProd,s
 				}
 
 			}
-		}
+		}		
 
 		function viewResponseBdt(response){
 
@@ -609,24 +609,24 @@ function addproduitzLotColleBdt(stockProd,idproduitProd,nbencaddieProd,qteProd,s
 				}
 
 			}
-		}
+		}			
 	// on ajoute le produit
 	RequestAjax.getAjax("/websvc/additem.ws.php?idproduit="+idproduitProd+"&qte="+qteProd+"&nbencaddie="+nbencaddieProd+"&nbstock="+stockProd+"&nocache="+Math.random(),viewResponseProduit);
 	// on ajoute la colle
-	RequestAjax.getAjax("/websvc/additem.ws.php?idproduit="+idproduitColle+"&qte="+qteColle+"&nbencaddie="+nbencaddieColle+"&nbstock="+stockColle+"&nocache="+Math.random(),viewResponseColle);
+	RequestAjax.getAjax("/websvc/additem.ws.php?idproduit="+idproduitColle+"&qte="+qteColle+"&nbencaddie="+nbencaddieColle+"&nbstock="+stockColle+"&nocache="+Math.random(),viewResponseColle);	
 	// on ajoute la boite de tri
-	RequestAjax.getAjax("/websvc/additem.ws.php?idproduit="+idproduitBdt+"&qte="+qteBdt+"&nbencaddie="+nbencaddieBdt+"&nbstock="+stockBdt+"&nocache="+Math.random(),viewResponseBdt);
+	RequestAjax.getAjax("/websvc/additem.ws.php?idproduit="+idproduitBdt+"&qte="+qteBdt+"&nbencaddie="+nbencaddieBdt+"&nbstock="+stockBdt+"&nocache="+Math.random(),viewResponseBdt);		
 	// message ok
 	var listeProduit = idproduitProd+','+idproduitColle+','+idproduitBdt;
 	$(document).ekkoLightbox({
 		remote:'/infos/popup.php?pg=adpGroupe&listeProduit='+listeProduit
-	});
-
+	});	
+	
 }
 
 function addproduitzLotPeintures(idproduitProd,qteProd,nbencaddieProd,stockProd,listePeintures) {
 
-
+	
 		function viewResponseProduit(response){
 
 			var data = eval('('+response.responseText+')');
@@ -645,25 +645,25 @@ function addproduitzLotPeintures(idproduitProd,qteProd,nbencaddieProd,stockProd,
 				}
 
 			}
-		}
-
+		}				
+	
 	// on ajoute le produit
 	RequestAjax.getAjax("/websvc/additem.ws.php?idproduit="+idproduitProd+"&qte="+qteProd+"&nbencaddie="+nbencaddieProd+"&nbstock="+stockProd+"&nocache="+Math.random(),viewResponseProduit);
 	var listeProduit = idproduitProd;
 	if(listePeintures.length>0){
 		var peintures = listePeintures.split(';');
 		for (var i=0; i<peintures.length;i++) {
-			RequestAjax.getAjax("/websvc/additem.ws.php?idproduit="+peintures[i]+"&qte="+1+"&nbencaddie=-1&nbstock=-1&nocache="+Math.random(),viewResponseProduit);
+			RequestAjax.getAjax("/websvc/additem.ws.php?idproduit="+peintures[i]+"&qte="+1+"&nbencaddie=-1&nbstock=-1&nocache="+Math.random(),viewResponseProduit);	
 			listeProduit = listeProduit+','+peintures[i];
 		}
 	}
 	// on ajoute les peintures
-
+	
 	//var listeProduit = idproduitProd+','+51212+','+51212+','+51212+','+51212+','+51212+','+51212;
 	$(document).ekkoLightbox({
 		remote:'/infos/popup.php?pg=adpPeinture&listeProduit='+listeProduit
-	});
-
+	});	
+	
 }
 
 function applicationRemise(idOffre){
@@ -671,9 +671,9 @@ function applicationRemise(idOffre){
 		$('div.ekko-lightbox button.close').click();
 		window.location.href = '/caddie/';
 	}
-
-	RequestAjax.getAjax("/websvc/applicationRemiseOffrePanier.ws.php?idoffre="+idOffre+"&nocache="+Math.random(),viewResponseRemisePanier);
-
+	
+	RequestAjax.getAjax("/websvc/applicationRemiseOffrePanier.ws.php?idoffre="+idOffre+"&nocache="+Math.random(),viewResponseRemisePanier);	
+	
 }
 
 function addproduitPanierz(idproduit,qte,incart,nbstock,idOffre) {
@@ -695,23 +695,23 @@ function addproduitPanierz(idproduit,qte,incart,nbstock,idOffre) {
 				}
 				// fermeture popup apercu si exisite
 				$('div.ekko-lightbox button.close').click();
-
+				
 				var r = document.location.href;
 				if (r.match(new RegExp('/caddie/'))) {
-
+				
 					window.location.href = '/caddie/';
-
+				
 				} else {
-
+					
 					// ouverture popup ajout produit
 					$(document).ekkoLightbox({
 						remote:'/infos/popup.php?pg=adp&id='+idproduit
-					});
-
+					});	
+				
 				}
-
+				
 			}
-		}
+		}	
 	RequestAjax.getAjax("/websvc/additem.ws.php?idproduit="+idproduit+"&qte="+qte+"&nbencaddie="+incart+"&nbstock="+nbstock+"&offrepanier=1&idOffre="+idOffre+"&nocache="+Math.random(),viewResponse);
 }
 
@@ -750,20 +750,20 @@ function addproduitzOffreSpeciale(idproduit,qte,incart,nbstock) {
 			}
 			// fermeture popup apercu si exisite
 			$('div.ekko-lightbox button.close').click();
-
+			
 			var r = document.location.href;
 			if (r.match(new RegExp('/caddie/'))) {
-
+			
 				window.location.href = '/caddie/';
-
+			
 			} else {
-
-
+				
+				
 				if (idSite != 2) {
 					// ouverture popup ajout produit
 					$(document).ekkoLightbox({
 						remote:'/infos/popup.php?pg=adpOffreSpeciale&id='+idproduit
-					});
+					});	
 				} else {
 					$.notify({
 						icon: '',
@@ -774,7 +774,7 @@ function addproduitzOffreSpeciale(idproduit,qte,incart,nbstock) {
 						delay: 5000,
 						icon_type: 'image',
 						template: '<div style="padding:14px;" data-notify="container" class="col-xs-11 col-sm-3 success-message-add-panier" role="success">' +
-							'<img data-notify="icon" src="/_themes/puzzlethemes/fr/images/check-circle-add-panier.svg" >' +
+							'<img data-notify="icon" src="/images/check-circle-add-panier.svg" >' +
 							'<span style="color:#035D0C;font-size: 12px;" data-notify="message">C\'est dans la boîte !</span>' +
 						'</div>'
 					});
@@ -796,7 +796,7 @@ function addproduitzOffreSpeciale(idproduit,qte,incart,nbstock) {
 
 					var totalProduitDansPanier = parseInt(incart) + parseInt(qte);
 					var $productCard = $('.button-add-cart[data-idproduit="' + idproduit + '"]');
-					var imageSrc = totalProduitDansPanier > 0 ? '/_themes/puzzlethemes/fr/images/add-to-cart-vide.svg' : '/_themes/puzzlethemes/fr/images/add-to-cart.svg';
+					var imageSrc = totalProduitDansPanier > 0 ? '/images/add-to-cart-vide.svg' : '/images/add-to-cart.svg';
 
 					$productCard.find('img').attr('src', imageSrc);
 
@@ -812,11 +812,11 @@ function addproduitzOffreSpeciale(idproduit,qte,incart,nbstock) {
 					$('#total-price-panier').html(data.totalPanier.toFixed(2).replace('.', ',') + '€');
 					updateCartModal(idproduit, qte, produit, prix);
 				}
-
+			
 			}
-
+			
 		}
-	}
+	}	
 RequestAjax.getAjax("/websvc/additem.ws.php?idproduit="+idproduit+"&qte="+qte+"&nbencaddie="+incart+"&nbstock="+nbstock+"&nocache="+Math.random(),viewResponseOffreSpeciale);
 }
 
@@ -839,23 +839,23 @@ function addproduitzVentePrivee(idproduit,qte,incart,nbstock) {
 			}
 			// fermeture popup apercu si exisite
 			$('div.ekko-lightbox button.close').click();
-
+			
 			var r = document.location.href;
 			if (r.match(new RegExp('/caddie/'))) {
-
+			
 				window.location.href = '/caddie/';
-
+			
 			} else {
-
+				
 				// ouverture popup ajout produit
 				$(document).ekkoLightbox({
 					remote:'/infos/popup.php?pg=adpVentePrivee&id='+idproduit
-				});
-
+				});	
+			
 			}
-
+			
 		}
-	}
+	}	
 RequestAjax.getAjax("/websvc/additem.ws.php?idproduit="+idproduit+"&qte="+qte+"&nbencaddie="+incart+"&nbstock="+nbstock+"&vp="+1+"&nocache="+Math.random(),viewResponseVentePrivee);
 }
 
@@ -867,14 +867,14 @@ function adp(idproduit,qte,incart,nbstock) {
 			$.get("/websvc/additem.ws.php?idproduit="+idproduit+"&qte="+qte+"&nbencaddie="+incart+"&nbstock="+nbstock+"&nocache="+Math.random(),function(data) {
 				if (data.page != null) { if (data.page != '') {
 					$('#s_'+idproduit).show();
-
+					
 					if (data.total != null) {
 						$('#montant_panier').html(data.total);
 						$('#montant_panier_head').html(data.nbtotal);
 						$('#montant_panier_head_tablette').html(data.nbtotal);
 						$('#montant_panier_head_mobile').html(data.nbtotal);
 					}
-
+					
 					} else { window.parent.location.href = '/caddie/'; }
 				 } else {
 					window.parent.location.href = '/caddie/';
@@ -889,7 +889,7 @@ function pad (str, max) {
 				str = str.toString();
 				return str.length < max ? pad("0" + str, max) : str;
 }
-
+	
 function os_update_chrono(interval) {
 				var temps = new Date().valueOf();
 				var delta = os_temps.js + os_temps.restant - temps;
@@ -929,10 +929,10 @@ function os_update_chrono(interval) {
 		}else{
 			 idcoeur = "#coeur";
 			 idhead = "#head_a_maliste";
-		}
-
+		}	
+		
 		$( window ).resize(function() {
-
+	
 			if (  window.innerWidth < '1050' && window.innerWidth > '540'){
 				 idcoeur = "#coeurtablette";
 				 idhead = "#head_a_maliste_tablette";
@@ -946,8 +946,8 @@ function os_update_chrono(interval) {
 				 idcoeur = "#coeur";
 				 idhead = "#head_a_maliste";
 			}
-
-		});
+			
+		});		
 	} else {
 		if (  window.innerWidth < '991px'){
 			idcoeur = "#coeurmobile";
@@ -958,11 +958,11 @@ function os_update_chrono(interval) {
 				idcoeur = "#coeurmobile";
 				idhead = "#head_a_maliste_mobile";
 			}
-		});
+		});		
 	}
-
+	
 	// etape 2
-
+	
 	function initMap() {
 
 		if(!mapLoad){
@@ -971,13 +971,13 @@ function os_update_chrono(interval) {
 						var t_dftopt 		= { mapTypeId	: google.maps.MapTypeId.ROADMAP };
 						map 			= 	new google.maps.Map(document.getElementById("mapPOI"),t_dftopt); // Instantiation de la map
 						var addr			= 	initmap_addr;
-
+						
 						loadMap(map,addr);
 						mapLoad = true;
 					}
 		}
 	}
-
+	
 	function initMapBE() {
 
 		if(!mapLoad){
@@ -986,25 +986,25 @@ function os_update_chrono(interval) {
 						var t_dftopt 		= { mapTypeId	: google.maps.MapTypeId.ROADMAP };
 						map 			= 	new google.maps.Map(document.getElementById("mapPOI"),t_dftopt); // Instantiation de la map
 						var addr			= 	initmap_addr;
-
+						
 						loadMapBE(map,addr);
 						mapLoad = true;
 					}
 		}
 	}
-
+	
 	function initMapDE() {
-
-
+	
+		
 		if(!mapLoad){
-
+		
 					if(typeof google != 'undefined'){
 
 						var t_dftopt 		= { mapTypeId	: google.maps.MapTypeId.ROADMAP };
-
+	
 						map 			= 	new google.maps.Map(document.getElementById("mapPOI"),t_dftopt); // Instantiation de la map
 						var addr			= 	initmap_addr;
-
+						
 						loadMapDE(map,addr);
 						mapLoad = true;
 					}
@@ -1014,7 +1014,7 @@ function os_update_chrono(interval) {
 
 	function showSuivi() { $('#d_sms').show(); }
 	function hideSuivi() { $('#d_sms').hide(); }
-
+	
 	function tstportable() {
 					var tel = $('#input_portable_destinataire').val();
 					var reg = new RegExp('[^0-9]','g');
@@ -1024,35 +1024,35 @@ function os_update_chrono(interval) {
 					if (!reg.test(tel)) { return true; }
 					return false;
 	}
-
-
-
+	
+	
+		
 $(function(){
 
 	if (document.getElementById('idSite')){
 			var idSite = document.getElementById('idSite').value;
 	}else{
 			var idSite = 0;
-	}
-
+	}		
+	
 	/*$('input.radio_pp_format').click(function() {
 		document.location.href = $(this).data('href');
 	});*/
-
-	$('#next_etape_choix_pp').click(function() {
+	
+	$('#next_etape_choix_pp').click(function() {  
 		var lien = $('input[type=radio][name=foo]:checked').attr('data-lien');
-		if (lien === undefined || lien === null) {
-			alert(local_selection_modele_pp);
+		if (lien === undefined || lien === null) {			
+			alert(local_selection_modele_pp);	
 		}else{
 			document.location.href = lien;
 		}
+		
+	}); 	
 
-	});
 
-
-	// placement de la suggestion de la recherche
+	// placement de la suggestion de la recherche 
 	if (document.getElementById("input_search")){
-
+		
 		var p_search = $('#input_search').offset();
 		var t_search = $(this).offset();
 
@@ -1060,33 +1060,33 @@ $(function(){
 		if (idSite==11) delta = 50;
 		var top = p_search.top + delta;
 		var left = p_search.left;
-
+		
 		var width = document.getElementById('input_search').offsetWidth;
 
 
 		// document.getElementById('divautosuggest').style.left = left+'px';
-		// document.getElementById('divautosuggest').style.top  = top+'px';
+		// document.getElementById('divautosuggest').style.top  = top+'px';	
 		// document.getElementById('divautosuggest').style.width  = width+'px';
-
+		
 		$( window ).resize(function() {
 			var p_search = $('#input_search').offset();
 			var t_search = $(this).offset();
-
+			
 			var top = p_search.top + 30;
-			var left = p_search.left;
-
+			var left = p_search.left;	
+			
 			var width = document.getElementById('input_search').offsetWidth;
-
+			
 			// document.getElementById('divautosuggest').style.left = left+'px';
 			// document.getElementById('divautosuggest').style.top  = top+'px';
 			// document.getElementById('divautosuggest').style.width  = width+'px';
 
-		});
+		});	
 
-	}
-
+	}			
+	
 	$('.highlight').click(function(){ $(this).find(':radio').attr('checked','checked'); });
-
+	
 	$('.img_info').on('mouseenter',function(){
 		$(this).parent().find('.infobulle').show();
 	}).on('mouseleave',function(){
@@ -1099,22 +1099,22 @@ $(function(){
 		str = str.replace(new RegExp('[\\\\/\$\<\>\"\%\#\;\|\{\}]','g'),"");
 		$(this).val(str);
 	});
-
+	
 	$('input.comma').bind('keyup keydown',function(){
 		var str = $(this).val();
-		str = str.replace(';',',');
+		str = str.replace(';',','); 
 		$(this).val(str);
 	});
-
-	$('#HeaderContent .Panier').on('mouseenter',function() {
+	
+	$('#HeaderContent .Panier').on('mouseenter',function() { 	
 		$('#HeaderContent .EspaceClientPanier .global').stop(true,true);
-		$('#HeaderContent .EspaceClientPanier .global').fadeIn(200);
+		$('#HeaderContent .EspaceClientPanier .global').fadeIn(200); 
 	});
-	$('#HeaderContent .EspaceClientPanier').on('mouseleave',function() {
+	$('#HeaderContent .EspaceClientPanier').on('mouseleave',function() { 
 		$('#HeaderContent .EspaceClientPanier .global').stop(true,true);
-		$('#HeaderContent .EspaceClientPanier .global').fadeOut(200);
+		$('#HeaderContent .EspaceClientPanier .global').fadeOut(200); 
 	});
-
+	
 	$('#select-pays').on('mouseenter',function() {
 		$('#choix-pays').stop(true,true);
 		$('#choix-pays').fadeIn(200);
@@ -1132,7 +1132,7 @@ $(function(){
 		$('#choix-pays-footer').stop(true,true);
 		$('#choix-pays-footer').fadeOut(200);
 	});
-
+	
 	$('#select-pays-footer-mobile').on('mouseenter',function() {
 		$('#choix-pays-footer-mobile').stop(true,true);
 		$('#choix-pays-footer-mobile').fadeIn(200);
@@ -1140,22 +1140,22 @@ $(function(){
 	$('#select-pays-footer-mobile').on('mouseleave',function() {
 		$('#choix-pays-footer-mobile').stop(true,true);
 		$('#choix-pays-footer-mobile').fadeOut(200);
-	});
-
+	});	
+	
 	$('#filtre_prix_valide').bind('click',function() {
 		var str = $(this).attr('data-rel');
 		str = str.replace('VPMIN',Math.floor($( "#filtre_prix_slider" ).slider( "values", 0 )));
 		str = str.replace('VPMAX',Math.ceil($( "#filtre_prix_slider" ).slider( "values", 1 )));
 		window.location.href = str;
-	});
-
+	});	
+	
 	$('#filtre_prix_valide_mobile').bind('click',function() {
 		var str = $(this).attr('data-rel');
 		str = str.replace('VPMIN',Math.floor($( "#filtre_prix_slider_mobile" ).slider( "values", 0 )));
 		str = str.replace('VPMAX',Math.ceil($( "#filtre_prix_slider_mobile" ).slider( "values", 1 )));
 		window.location.href = str;
-	});
-
+	});		
+	
 	if (idSite==2) {
 		$.each($('.container_filtre_search input'), function(a, b) {
 			$(b).bind('keypress keydown keyup', function() {
@@ -1170,7 +1170,7 @@ $(function(){
 						$('#cf_' + t + '_list span.no').show();
 						return;
 					}
-
+	
 					if (len === 0) {
 							// Si le champ de recherche est vide, réaffichez tous les éléments
 							$('#cf_' + t + '_list a').show();
@@ -1178,9 +1178,9 @@ $(function(){
 							$('#cf_' + t + '_list span.no').hide();
 							return;
 					}
-
+	
 					var rg = new RegExp(c);
-
+	
 					$.each($('#cf_' + t + '_list a, #cf_' + t + '_list label'), function(k, v) {
 							var s = $(v).text().replace(/ /g, '').toLowerCase();
 							if (s.match(rg) == null) {
@@ -1190,7 +1190,7 @@ $(function(){
 									no = false;
 							}
 					});
-
+	
 					if (no) {
 							$('#cf_' + t + '_list span.no').show();
 					} else {
@@ -1201,7 +1201,7 @@ $(function(){
 	} else {
 		$.each($('.container_filtre_search input'),function(a,b) {
 			$(b).bind('keypress keydown keyup',function() {
-
+				
 				var t = $(this).attr('name');
 				var c = AccentToNoAccent($(this).val());
 				c = c.replace(/ /g,'').toLowerCase();
@@ -1212,7 +1212,7 @@ $(function(){
 				var no = true;
 				$.each($('#cf_'+t+'_list a'),function(k,v) {
 						s = $(v).attr('id');
-						if (s.match(rg) == null && len>0) {	$(v).hide(); } else {
+						if (s.match(rg) == null && len>0) {	$(v).hide(); } else { 
 							if (len>0 && s.match(rg2) != null) { $(v).prependTo('#cf_'+t+'_list'); }
 							$(v).show(); no=false;
 						}
@@ -1221,12 +1221,12 @@ $(function(){
 			});
 		});
 	}
-
-
+	
+	
 	$('form.js_form').submit(function() { return js_form($(this)); });
-
+	
 	$(document).on('click','#alerte_valider',function() {
-
+	
 		var mail 	= $('#alerte_email').val();
 		mail 		= mail.toLowerCase();
 		$('#alerte_email').val(mail);
@@ -1234,30 +1234,30 @@ $(function(){
 		if(mail.length < 1 || !regex.test(mail)){
 			$('#alerte_email').css('border','solid 1px #f00');
 		}else{
-			$.post('/websvc/alerte_nouveaute.ws.php',{type:$('#alerte_type').val(),id:$('#alerte_id').val(),email:$('#alerte_email').val(),puzzle_enfant:$('#alerte_puzzle_enfant').prop('checked') ? 1:0,puzzle_adulte:$('#alerte_puzzle_adulte').prop('checked') ? 1:0},function(retour) {
+			$.post('/websvc/alerte_nouveaute.ws.php',{type:$('#alerte_type').val(),id:$('#alerte_id').val(),email:$('#alerte_email').val(),puzzle_enfant:$('#alerte_puzzle_enfant').prop('checked') ? 1:0,puzzle_adulte:$('#alerte_puzzle_adulte').prop('checked') ? 1:0},function(retour) { 
 				$('#div_alert_inscription').hide();
 				$('#div_alert_termine').fadeIn(500);
 			},'json');
 		}
 
 	});
-
+	
 	$(document).on('click','#alerte_nouveaute_fermer',function() {
-		$('div.ekko-lightbox button.close').click();
+		$('div.ekko-lightbox button.close').click(); 
 	});
-
-	$(".jsPlImage").mouseenter( function() {
+	
+	$(".jsPlImage").mouseenter( function() { 
 			$('#jsPl_'+$(this).attr('rel')).show();
-			$('#jsPl_'+$(this).attr('rel')).mouseout( function() {
+			$('#jsPl_'+$(this).attr('rel')).mouseout( function() { 
 				$(this).hide();
 			});
 	});
-
+	
 	$('#nextetape').click(function(){
 
 			if (idSite==2 || idSite==5 || idSite==9 || idSite==11){
 				if(!document.getElementById('cgv').checked){
-					$('#errCgv').css({ 'display' : 'inline'});
+					$('#errCgv').css({ 'display' : 'inline'}); 
 					if (idSite != 2){
 						alert(localCGV);
 					}
@@ -1272,7 +1272,7 @@ $(function(){
 							if (response.connected) {
 									window.location.href = '/caddie/?pg=etape2';
 							} else {
-								openModal();
+								openModal(); 
 							}
 					}
 				});
@@ -1280,10 +1280,10 @@ $(function(){
 				window.location.href='/caddie/?pg=etape2';
 			}
 			return true;
-	});
+	});	
 
-
-	$("div.cubecoeur").bind('click',function() {
+	
+	$("div.cubecoeur").bind('click',function() { 
 	if ($(this).data('site')==11) {
 		var i = $(this).children();
 		clic_cubecoeur_fdp(i);
@@ -1292,34 +1292,34 @@ $(function(){
 
 	var type = $(this).attr('data-rel');
 	var pg = $(this).attr('data-pg');
-
-
+	
+	
 	if (typeof type != "undefined") { // si on est sur la fiche produit
-		var btn_prod_oui = "/_themes/puzzlethemes/fr/images/btn-ajout-liste2.jpg";
-		var btn_prod_non = "/_themes/puzzlethemes/fr/images/btn-ajout-liste.jpg";
+		var btn_prod_oui = "/img/btn-ajout-liste2.jpg";
+		var btn_prod_non = "/img/btn-ajout-liste.jpg";
 		if (idSite==2) {
-			var btn_survol = "/_themes/puzzlethemes/fr/images/heart_icon_red.svg";
+			var btn_survol = "/img/heart_icon_red.svg";
 		} else {
-			var btn_survol = "/_themes/puzzlethemes/fr/images/etoile.png";
+			var btn_survol = "/img/etoile.png";
 		}
 	}else{ // si on est sur le reste du site
 		if (idSite==2) {
-			var btn_prod_oui = "/_themes/puzzlethemes/fr/images/heart_icon_red.svg";
-			var btn_prod_non = "/_themes/puzzlethemes/fr/images/heart_icon.svg";
-			var btn_survol = "/_themes/puzzlethemes/fr/images/heart_icon_red.svg";
+			var btn_prod_oui = "/img/heart_icon_red.svg";
+			var btn_prod_non = "/img/heart_icon.svg";
+			var btn_survol = "/img/heart_icon_red.svg";
 		} else {
-			var btn_prod_oui = "/_themes/puzzlethemes/fr/images/etoile.png";
-			var btn_prod_non = "/_themes/puzzlethemes/fr/images/etoile_gris.png";
-			var btn_survol = "/_themes/puzzlethemes/fr/images/etoile.png";
+			var btn_prod_oui = "/img/etoile.png";
+			var btn_prod_non = "/img/etoile_gris.png";
+			var btn_survol = "/img/etoile.png";
 		}
 		if (idSite==24 && pg != "maliste") { // puzzle-online
 			 btn_prod_oui = "/images-puzzle-online/btn_merkliste.png";
 			 btn_prod_non = "/images-puzzle-online/btn_merkliste2.png";
-			 btn_survol = "/_themes/puzzlethemes/fr/images/etoile.png";
-
+			 btn_survol = "/img/etoile.png";
+		
 		}
 	}
-
+	
 	//if (typeof type != "undefined") {
 	// sur la fiche produit
 		var i = $(this).children();
@@ -1328,7 +1328,7 @@ $(function(){
 			var title = local_title_coeur_gris;
 			i.attr('title',title);
 			i.attr('alt',title);
-
+			
 			if (idhead == "#head_a_maliste"){
 				if (idSite!=2) {
 					var a = $(idhead).html();
@@ -1354,10 +1354,10 @@ $(function(){
 				var tt = parseInt(a)-1;
 				$(idhead).html(tt);
 			}
-
+			
 
 			$.post('/websvc/maliste.ws.php',{del:1,id:i.attr('data-rel')},function(data){
-
+					
 					},'json');
 		} else {
 			if (idSite!=2) {
@@ -1374,27 +1374,27 @@ $(function(){
 					$('body').append(icoeur);
 					icoeur.css('position','absolute').css('top',t.top).css('left',t.left).css('z-index','1200');
 				}
-
+				
 				if (idhead == "#head_a_maliste"){
 					var a = $(idhead).html();
 					var t = a.split('(');
 					var tt = parseInt(t[1].split(')')[0])+1;
 					$(idhead).html(t[0]+'('+tt+')');
 				}else if (idhead == "#head_a_maliste_tablette"){
-					var a = $(idhead).html();
+					var a = $(idhead).html();			
 					var tt = parseInt(a)+1;
 					$(idhead).html(tt);
 				}else if (idhead == "#head_a_maliste_mobile"){
-					var a = $(idhead).html();
+					var a = $(idhead).html();			
 					var tt = parseInt(a)+1;
 					$(idhead).html(tt);
 				}
 				$.post('/websvc/maliste.ws.php',{add:1,id:i.attr('data-rel')},function(data){
-
+			
 						},'json');
-				icoeur.animate({top: "-="+dt,left: "-="+dl}, 800, 'swing', function() {
+				icoeur.animate({top: "-="+dt,left: "-="+dl}, 800, 'swing', function() {	
 					icoeur.remove();
-
+					
 				});
 			} else {
 				i.attr('src',btn_prod_oui);
@@ -1410,7 +1410,7 @@ $(function(){
 					$('body').append(icoeur);
 					icoeur.css('position','absolute').css('top',t.top).css('left',t.left).css('z-index','1200');
 				}
-
+				
 				if (idhead == "#head_a_maliste"){
 					var a = $(".nbWishList").html();
 					var tt = parseInt(a)+1;
@@ -1421,39 +1421,39 @@ $(function(){
 					}
 					$(".nbWishList").html(tt);
 				}else if (idhead == "#head_a_maliste_tablette"){
-					var a = $(idhead).html();
+					var a = $(idhead).html();			
 					var tt = parseInt(a)+1;
 					$(idhead).html(tt);
 				}else if (idhead == "#head_a_maliste_mobile"){
-					var a = $(idhead).html();
+					var a = $(idhead).html();			
 					var tt = parseInt(a)+1;
 					$(idhead).html(tt);
 				}
 
 				$.post('/websvc/maliste.ws.php',{add:1,id:i.attr('data-rel')},function(data){
-
+			
 						},'json');
-				icoeur.animate({top: "-="+dt,left: "-="+dl}, 800, 'swing', function() {
+				icoeur.animate({top: "-="+dt,left: "-="+dl}, 800, 'swing', function() {	
 					icoeur.remove();
-
+					
 				});
 			}
 		}
-
+	
 	});
-
-
-	$("div.cubecoeur_fdp").bind('click',function() {
+	
+	
+	$("div.cubecoeur_fdp").bind('click',function() { 
 	var i = $(this).children();
 	clic_cubecoeur_fdp(i);
-
+	
 });
-
-
-
-
+	
+	
+	
+	
 	// etape 3
-
+	
 	$('.infosPaiement').hide();
 	$('#infosPaiement9').show();
 	$('input[name="mode_paiement"]').bind('click',function(){
@@ -1462,16 +1462,16 @@ $(function(){
 		$('.infosPaiement').hide();
 		$('#infosPaiement' + id).show();
 	});
-
+	
 	$('#etape3submit').click(function() {
 		$(this).hide();
 		$(this).parents('form').submit();
 	});
-
-	// etape 2
+	
+	// etape 2 
 
 	if ($('#f_etape2').length) {
-
+	
 			$('#norue,#norue2').bind('click',function() {
 				if ($(this).prop('checked')) {
 					document.location.href = '/caddie/?pg=etape2&norue=1';
@@ -1479,42 +1479,42 @@ $(function(){
 					document.location.href = '/caddie/?pg=etape2';
 				}
 			});
-
+	
 			if (typeof mapBE != "undefined") {
-
+						
 				if (mapBE==true) {
 					if (typeof geoCheckBE === 'function') {
-						geoCheckBE(initmap_addr);
+						geoCheckBE(initmap_addr); 
 					}
 				} else {
 					if (livraison_pays=='FRANCE') {
 						if (typeof geoCheck === 'function') {
-							geoCheck(initmap_addr);
+							geoCheck(initmap_addr); 
 						}
 					}
 				}
 				if (typeof mapDE != "undefined") {
 					if (mapDE==true) {
 						if (typeof geoCheckDE === 'function') {
-							geoCheckDE(initmap_addr);
+							geoCheckDE(initmap_addr); 
 						}
 					}
 				}
-
+				
 			} else {
-
+	
 				if (livraison_pays=='FRANCE') {
 					if (typeof geoCheck === 'function') {
 						geoCheck(initmap_addr);
 					}
 				}
-
+				
 			}
-
-			$(document).on('change','#choiceAddress',function() {
+			
+			$(document).on('change','#choiceAddress',function() { 
 				$('<div id="dialog-page-load"></div>').appendTo('body');
-				$('#dialog-page-load').html('<p style="text-align:center;display:block;color:#000;"><img src="/_themes/puzzlethemes/fr/images/ajax-loader.gif"/><br/>'+local_wait+'</p>');
-				$.colorbox({inline:true, transition:'none', href:'#dialog-page-load', closeButton:false, width:"50%", height:"150"});
+				$('#dialog-page-load').html('<p style="text-align:center;display:block;color:#000;"><img src="/images/ajax-loader.gif"/><br/>'+local_wait+'</p>');
+				$.colorbox({inline:true, transition:'none', href:'#dialog-page-load', closeButton:false, width:"50%", height:"150"});					
 				if (idSite != 2) {
 					$(this).closest('form').submit();
 				} else {
@@ -1523,7 +1523,7 @@ $(function(){
 						$('#formSelectChoiceAdresse').submit();
 				}
 			});
-
+		
 			$(document).on('click','.btAddressCaddie',function(){
 				var obj = $(this);
 				var _id;
@@ -1534,11 +1534,11 @@ $(function(){
 				if (obj.attr('rel')) {
 					_ca = parseInt(obj.attr('rel'));
 				}
-
+				
 				// on cache le bouton ajouter adresse
-				$("#btAddressCaddie").hide();
-
-
+				$("#btAddressCaddie").hide(); 
+				
+				
 				$.post('../websvc/etape2_coordonnees.ws.php',{ id : _id, ca : _ca },function(data){
 					if (idSite != 2) {$('#f_ml').hide();}
 					$('#ad-adresse-livr').fadeOut(200,function(){
@@ -1552,28 +1552,28 @@ $(function(){
 				});
 			});
 
-
+			
 			$(document).on('click','#buttonCancel',function(){
 
 				$('#ajaxAddress').fadeOut(200,function(){
-
+				
 					if (idSite != 2) {$('#f_ml').hide();}
 					$('#ad-adresse-livr').fadeIn(150);
-
+					
 					$(this).remove();
-
+					
 					// on affiche le bouton ajouter adresse
-					$("#btAddressCaddie").toggle();
+					$("#btAddressCaddie").toggle(); 
 					$('.btAddressCaddie').focus();
-
+				
 				});
 			});
-
+			
 			$(document).on('click','#submitInscription',function() {
 				f = $(this).parents('form');
 				f.submit();
 			});
-
+			
 			$(document).on('click keydown', 'input[name="z_mode_livraison"]', function (event) {
 				if (event.type === 'click' || event.key === 'Enter') {
 					$('input[name="mode_livraison"]').prop('checked', false);
@@ -1612,11 +1612,11 @@ $(function(){
 						if (typeof mapDE != "undefined") {
 							if (mapDE==true) {
 								initMapDE();
-							}
+							} 
 						} else {
 								initMap();
 						}
-
+						
 					}
 				} else {
 					if (typeof initMap === 'function') {
@@ -1624,29 +1624,29 @@ $(function(){
 					}
 				}
 			});
-
+			
 
 			$('.custom-radio').on('keydown', function (event) {
 				if (event.key === 'Enter') {
 					$(this).find('input.poi').click();
 				}
 			});
-
+			
 			$('#portable_destinataire').show();
-
-
+			
+			
 			$('#f_etape2').bind('click',function() {
-
+				
 				if (document.getElementById('idSite')){
 						var idSite = document.getElementById('idSite').value;
 				}else{
 						var idSite = 0;
-				}
+				}					
 
 				//ONLY if this field exists then do the tests
 				inputName = 'acceptSupplierMailInfo';
 				if($('input[name=' + inputName + ']').length>0) {
-
+					
 					//only alert if we selected a delivery mode
 					var deliveryMode = $('input[name=mode_livraison]:checked').val();
 
@@ -1664,7 +1664,7 @@ $(function(){
 						$('input[name=mode_livraison]').bind('change', function() {
 							$("#supplierMailInfo_err").hide();
 						});
-
+						
 						$("#supplierMailInfo_err").html("");
 						$("#supplierMailInfo_err").hide();
 						var acceptSupplierMailInfo = $('input[name=' + inputName + ']:checked').val();
@@ -1683,10 +1683,10 @@ $(function(){
 				var a = $('input[name=mode_livraison]:checked').val();
 				var b = $('input[name=z_mode_livraison]:checked').val();
 
-
-
+				
+				
 				$('#cadre_choix_ml_err').html("");
-				$('#cadre_choix_ml').css('border','solid 1px #ccc');
+				$('#cadre_choix_ml').css('border','solid 1px #ccc');					
 				if (a===undefined && b===undefined)  {
 					$('#cadre_choix_ml').css('border','solid 1px #f00');
 					$('#cadre_choix_ml_err').html(" - "+local_err_mode_liv);
@@ -1694,9 +1694,9 @@ $(function(){
 					//alert(local_err_mode_liv);
 					return false;
 				}
-
+				
 				$('#choixPOI_err').html("");
-				$('#choixPOI').css('border','solid 1px #ccc');
+				$('#choixPOI').css('border','solid 1px #ccc');					
 				if (a===undefined) {
 					$('#choixPOI').css('border','solid 1px #f00');
 					$('#choixPOI_err').html(local_err_mode_liv_pr);
@@ -1705,28 +1705,28 @@ $(function(){
 					return false;
 				}
 
+				
 
-
-
+				
 				if (idSite == "10" || idSite == "24"){
-
-
+				
+					
 					var tel = $('#input_portable_destinataire').val();
-
+						
 					var reg = new RegExp('[^0-9]','g');
 					$('#input_portable_destinataire').val(tel.replace(reg,''));
-					if (livraison_pays=='FRANCE') {
+					if (livraison_pays=='FRANCE') { 
 						var reg = new RegExp('^(06|07)([0-9]{8})$','g');
-					} else {
+					} else { 
 						var reg = new RegExp('^([0-9]{6,})$','g');
 					}
 					tel = $('#input_portable_destinataire').val();
-
+					
 					$('#portable_destinataire_err').html("");
-					$('#input_portable_destinataire').css('border','solid 1px #ccc');
+					$('#input_portable_destinataire').css('border','solid 1px #ccc');				
 					if (!reg.test(tel)) {
 						if (!$('#sans_portable').prop('checked') && !$('#ml8').prop('checked')) {
-
+							
 							$('html, body').animate({scrollTop: ($('#input_portable_destinataire').offset().top-150)},200);
 							//alert(local_err_portable_obligatoire);
 							//GetElementById("portable_destinataire_err").InnerHTML="Vous devez indiquer un numéro de téléhone portable";
@@ -1736,10 +1736,10 @@ $(function(){
 						}
 					}
 				}
-
+				
 
 				$('#tel_err').html("");
-				$('#telsms').css('border','solid 1px #ccc');
+				$('#telsms').css('border','solid 1px #ccc');				
 				if ($('#suivi_sms').prop('checked')) {
 					var reg = new RegExp('[^0-9]','g');
 					var tel = $('#telsms').val();
@@ -1753,27 +1753,27 @@ $(function(){
 					}
 				}
 			});
-
+		
 			$('#sans_portable').bind('click',function() {
 				if ($('#sans_portable').prop('checked')) {
 					$('#input_portable_destinataire').val('');
 					$('#suivi_sms').prop('checked',false);
 				}
 			});
-
+			
 			$('#suivi_sms').bind('change',function() {
 				if ($('#suivi_sms').prop('checked')) {
 					if ($('#telsms').val()=='') $('#telsms').val($('#input_portable_destinataire').val());
 					$('#txt_sms').show();
 				}
 			});
-
-
-
+	
+	
+	
 	}
+		
 
-
-
+	
 
 });
 
@@ -1792,7 +1792,7 @@ function updateCartModal(idproduit, qte, produit, prix) {
 
 			$quantitySelect.val(newQuantity);
 			$existingProduct.find('select').attr('data-qte-initial', newQuantity);
-
+			
 			var unitPrice = parseFloat($existingProduct.data('unitprice'));
 			var newTotal = unitPrice * newQuantity;
 
@@ -1810,7 +1810,7 @@ function updateCartModal(idproduit, qte, produit, prix) {
 					'<div style="display: flex;justify-content: space-between;align-items: flex-start;align-self: stretch;">' +
 					'<span style="color: #292929;font-size: 12px;font-weight: 600;">' + produit.designation + '</span>' +
 					'<a title="Supprimer le produit ?" href="javascript:void(0);" onClick="showConfirmationPopup(' + idproduit + ', ' + produit.indexLigne + ')" class="" style="float:right">' +
-					'<img width="16" height="16" src="/_themes/puzzlethemes/fr/images/trash-mod.svg" alt="Supprimer" title="Supprimer" style="border:0px;cursor:pointer">' +
+					'<img width="16" height="16" src="/images/trash-mod.svg" alt="Supprimer" title="Supprimer" style="border:0px;cursor:pointer">' +
 					'</a>' +
 					'</div>' +
 					(produit.nbpieces ? '<span style="color: #292929;font-size: 12px;font-weight: 400;">' + produit.nbpieces + ' pièces</span>' : '') +
@@ -1823,7 +1823,7 @@ function updateCartModal(idproduit, qte, produit, prix) {
 			for (var i = 0; i < maxOptions; i++) {
 					productHtml += '<option value="' + (i + 1) + '" ' + ((i + 1 === qte) ? 'selected' : '') + '>' + (i + 1) + '</option>';
 			}
-
+					
 
 			productHtml += '</select>' +
 					'<div><span id="total-ligne-panier" class="total-ligne-panier-' + produit.indexLigne + '" style="font-size: 12px;font-weight: 700;">' + ((prix * qte).toFixed(2).replace('.', ',')) + '€</span></div>' +
@@ -1918,13 +1918,13 @@ function removeProductFromCart(idproduit) {
         $('#montant_panier_head').html(data.nbtotal);
 
         var $productCard = $('.button-add-cart[data-idproduit="' + idproduit + '"]');
-        $productCard.find('img').attr('src', '/_themes/puzzlethemes/fr/images/add-to-cart.svg');
-
+        $productCard.find('img').attr('src', '/images/add-to-cart.svg');
+        
         var $totalProduitCard = $productCard.find('#total-produit-card-' + idproduit);
         if ($totalProduitCard.length > 0) {
           $totalProduitCard.remove();
         }
-
+				
 				if (nbproduits === 0) {
 					$('#total-produit-panier').html('');
 					$('#modal-body-products').hide();
@@ -1953,7 +1953,7 @@ function showConfirmationPopup(idproduit) {
 
 	restoreBackgroundElements()
 	disableBackgroundElements(modalPopUp);
-
+	
   document.getElementById('confirm-delete').onclick = function() {
     removeProductFromCart(idproduit);
     closeConfirmationPopup();

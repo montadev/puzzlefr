@@ -40,7 +40,7 @@ function resetMenuState() {
 
 function showSubMenu(event, id) {
     var subMenu = document.getElementById(id);
-
+    
     subMenu.style.display = 'flex';
     var menuColumn = subMenu.closest('.menu-column');
     if (menuColumn) {
@@ -262,7 +262,7 @@ function toggleAccordeonFaq(element) {
             text.style.maxHeight = '0';
             question.classList.remove('active');
             title.classList.remove('active');
-            icon.src = '/_themes/puzzlethemes/fr/images/add-circle.svg';
+            icon.src = '/images/add-circle.svg';
 
             focusableElements.forEach(element => {
                 element.setAttribute('tabindex', '-1');
@@ -276,7 +276,7 @@ function toggleAccordeonFaq(element) {
         clickedText.style.maxHeight = clickedText.scrollHeight + 'px';
         element.classList.add('active');
         clickedTitle.classList.add('active');
-        clickedIcon.src = '/_themes/puzzlethemes/fr/images/minus-circle.svg';
+        clickedIcon.src = '/images/minus-circle.svg';
 
         focusableElements.forEach(element => {
             element.setAttribute('tabindex', '0');
@@ -285,7 +285,7 @@ function toggleAccordeonFaq(element) {
         clickedText.style.maxHeight = '0';
         element.classList.remove('active');
         clickedTitle.classList.remove('active');
-        clickedIcon.src = '/_themes/puzzlethemes/fr/images/add-circle.svg';
+        clickedIcon.src = '/images/add-circle.svg';
 
         focusableElements.forEach(element => {
             element.setAttribute('tabindex', '-1');
@@ -363,19 +363,19 @@ $(document).ready(function () {
     // Fonction pour restaurer tous les éléments supprimés et appliquer le filtre
     function restoreAndFilter(sliderId, filter, restoreAll = false) {
         var $slider = $(`.slider-new[data-slider-id="${sliderId}"]`);
-
+    
         // Restaurer les éléments originaux
         $slider.slick('slickRemove', null, null, true);
         originalItems[sliderId].forEach(function (item) {
             $slider.slick('slickAdd', item);
         });
-
+    
         if (!restoreAll) {
             // Filtrer les éléments
             filteredItems[sliderId] = originalItems[sliderId].filter(function (item) {
                 var ageGroup = item.dataset.ageGroup || '';
                 var mif = item.dataset.mif || '';
-
+    
                 if (
                     (filter === 'adulte' && ageGroup !== 'adulte') ||
                     (filter === 'enfant' && ageGroup !== 'enfant') ||
@@ -388,7 +388,7 @@ $(document).ready(function () {
         } else {
             filteredItems[sliderId] = originalItems[sliderId];
         }
-
+    
         // Mettre à jour l'affichage
         updateDisplay(sliderId);
     }
@@ -412,10 +412,10 @@ $(document).ready(function () {
         var filter = $filterTag.data('filter');
         var sliderId = $filterTag.data('slider-id');
         var isActive = $filterTag.hasClass('active');
-
+    
         // Retirer la classe active de tous les tags
         $(`.filter-tag[data-slider-id="${sliderId}"]`).removeClass('active');
-
+    
         if (isActive) {
             // Si le tag était déjà actif, restaurer tous les éléments
             restoreAndFilter(sliderId, filter, true);
@@ -424,7 +424,7 @@ $(document).ready(function () {
             $filterTag.addClass('active');
             restoreAndFilter(sliderId, filter);
         }
-
+    
         // Revenir au début du slider
         $('.slider-new[data-slider-id="' + sliderId + '"]').slick('slickGoTo', 0);
     });
@@ -554,7 +554,7 @@ document.addEventListener("DOMContentLoaded", function () {
     if (defaultRadio) {
         defaultRadio.checked = true;
         toggleMenuInfosOnChange();
-
+        
         const radios = document.querySelectorAll('input[name="mode_paiement"]');
         radios.forEach(radio => {
             radio.addEventListener('change', toggleMenuInfosOnChange);
@@ -642,7 +642,7 @@ if (currentUrl.includes("/infos/?pg=espace-informations")) {
         const modesLivraisonBlock = document.getElementById("modes-livraison");
         const menuItems = document.querySelectorAll(".paginfo-menu");
         modesLivraisonBlock.style.display = "flex";
-
+        
         // Function to update the image src
         function updateImageSrc(menuItem, isActive) {
             const imgElement = menuItem.querySelector('img');
@@ -716,30 +716,30 @@ if (currentUrl.includes("/infos/?pg=espace-informations")) {
             wrapper.classList.add('select');
             select.parentNode.insertBefore(wrapper, select);
             wrapper.appendChild(select);
-
+        
             var contentSelect = document.createElement('div');
             contentSelect.classList.add('content-select');
             wrapper.appendChild(contentSelect);
-
+        
             var styledSelect = document.createElement('div');
             styledSelect.classList.add('select-styled');
             contentSelect.appendChild(styledSelect);
-
+        
             var list = document.createElement('ul');
             list.classList.add('select-options');
             wrapper.appendChild(list);
-
+        
             Array.from(select.children).forEach(function (option) {
                 var optionText = option.textContent;
                 var optionValue = option.value;
-                var imagePath = "/_themes/puzzlethemes/fr/images/" + optionValue + ".svg";
-
+                var imagePath = "/images/" + optionValue + ".svg";
+        
                 var listItem = document.createElement('li');
                 listItem.setAttribute('class', option.getAttribute('class'));
                 listItem.setAttribute('data-value', optionValue);
                 listItem.innerHTML = '<img src="' + imagePath + '" alt="' + optionText + '" width="24" height="24">' + optionText;
                 list.appendChild(listItem);
-
+        
                 if (option.selected) {
                     listItem.classList.add('is-selected');
                     styledSelect.innerHTML = '<img src="' + imagePath + '" alt="' + optionText + '" width="24" height="24">' + optionText;
@@ -748,7 +748,7 @@ if (currentUrl.includes("/infos/?pg=espace-informations")) {
                 divider.classList.add('divider');
                 list.appendChild(divider);
             });
-
+        
             var listItems = list.querySelectorAll('li');
             contentSelect.addEventListener('click', function (e) {
                 e.stopPropagation();
@@ -759,10 +759,10 @@ if (currentUrl.includes("/infos/?pg=espace-informations")) {
                         item.innerHTML = item.dataset.selectedText;
                     }
                 });
-
+        
                 this.classList.toggle('active');
                 this.nextElementSibling.style.display = this.classList.contains('active') ? 'flex' : 'none';
-
+                
                 if (this.classList.contains('active')) {
                     this.dataset.selectedText = styledSelect.innerHTML;
                     styledSelect.innerHTML = '<span style="font-size: 14px;font-weight: 600;">Menu</span>';
@@ -770,13 +770,13 @@ if (currentUrl.includes("/infos/?pg=espace-informations")) {
                     styledSelect.innerHTML = this.dataset.selectedText;
                 }
             });
-
+        
             Array.from(listItems).forEach(function (item) {
                 item.addEventListener('click', function (e) {
                     e.stopPropagation();
                     var optionText = this.textContent;
                     var optionValue = this.getAttribute('data-value');
-                    var imagePath = "/_themes/puzzlethemes/fr/images/" + optionValue + ".svg";
+                    var imagePath = "/images/" + optionValue + ".svg";
                     styledSelect.innerHTML = '<img src="' + imagePath + '" alt="' + optionText + '" width="24" height="24">' + optionText;
                     contentSelect.classList.remove('active');
                     list.style.display = 'none';
@@ -784,7 +784,7 @@ if (currentUrl.includes("/infos/?pg=espace-informations")) {
                     Array.from(list.children).forEach(function (li) {
                         li.classList.remove('is-selected');
                     });
-
+        
                     Array.from(listItems).forEach(function (li) {
                         var optionClass = li.getAttribute('class');
                         document.getElementById(optionClass).style.display = 'none';
@@ -797,19 +797,19 @@ if (currentUrl.includes("/infos/?pg=espace-informations")) {
                     this.classList.add('is-selected');
                 });
             });
-
+        
             document.addEventListener('click', function () {
                 contentSelect.classList.remove('active');
                 list.style.display = 'none';
                 styledSelect.innerHTML = contentSelect.dataset.selectedText || styledSelect.innerHTML;
             });
-
+        
             var blockParam = getUrlParameter('block');
             if (blockParam) {
                 Array.from(select.children).forEach(function (option) {
                     if (option.classList.contains(blockParam)) {
                         option.selected = true;
-                        var imagePath = "/_themes/puzzlethemes/fr/images/" + option.value + ".svg";
+                        var imagePath = "/images/" + option.value + ".svg";
                         document.getElementById(blockParam).style.display = 'flex';
                         styledSelect.innerHTML = '<img src="' + imagePath + '" alt="' + option.innerHTML + '" width="24" height="24">' + option.innerHTML;
                     }
@@ -877,11 +877,11 @@ if (currentUrl.includes("/auteurs-personnages.html")) {
     let blockToDisplay = urlParams.get('block');
 
     function toggleBlock(targetId) {
-        blockToDisplay = targetId;
+        blockToDisplay = targetId; 
         var container = document.querySelector('.button-container');
         var buttons = document.querySelectorAll('.toggle-button');
         var blocks = document.querySelectorAll('.adult-authors, .licenses-children');
-
+        
         blocks.forEach(function (block) {
             if (block.id === targetId) {
                 block.classList.add('active');
@@ -913,8 +913,8 @@ if (currentUrl.includes("/auteurs-personnages.html")) {
 
         updateSidebarPosition();
     }
-
-
+    
+    
     function updateSidebarPosition() {
         const activeBlock = document.getElementById(blockToDisplay);
         const sideBar = activeBlock.querySelector(".side-bar-authors");
@@ -946,7 +946,7 @@ if (currentUrl.includes("/auteurs-personnages.html")) {
 
         document.querySelectorAll('.adult-authors, .licenses-children').forEach(bloc => {
             bloc.classList.remove('active');
-            setTabindex(bloc, -1);
+            setTabindex(bloc, -1); 
         });
 
         const activeBlock = document.getElementById(blockToDisplay);
@@ -1017,7 +1017,7 @@ function toggleProduit(arrowId, contentId, containerId, rowId) {
                 } else {
                     blocPti.classList.remove('bloc-p-ti');
                     blocPti.classList.add('ban-ferm-pan');
-                    arrowIcon.src = '/_themes/puzzlethemes/fr/images/nav-arrow-down-n-pan.svg';
+                    arrowIcon.src = '/images/nav-arrow-down-n-pan.svg';
                 }
             } else {
                 arrowIcon.style.transform = 'rotate(180deg)';
@@ -1036,7 +1036,7 @@ function toggleProduit(arrowId, contentId, containerId, rowId) {
                 } else {
                     blocPti.classList.remove('ban-ferm-pan');
                     blocPti.classList.add('bloc-p-ti');
-                    arrowIcon.src = '/_themes/puzzlethemes/fr/images/nav-arrow-down-pan.svg';
+                    arrowIcon.src = '/images/nav-arrow-down-pan.svg';
                 }
             } else {
                 arrowIcon.style.transform = 'rotate(0deg)';
@@ -1341,15 +1341,15 @@ function addAllToCartTOTO(produitComplementaire) {
 
 function selectPuzzle(element) {
     var puzzleOptions = document.querySelectorAll('.puzzle-option');
-
+    
     puzzleOptions.forEach(function(option) {
         option.classList.remove('selected');
     });
     element.classList.add('selected');
-
+    
     const radioInput = element.querySelector('input[type="radio"]');
     radioInput.checked = true;
-
+    
     const selectedText = element.querySelector('.nom').textContent;
     document.getElementById('selected_puzzle').textContent = selectedText;
 
@@ -1419,7 +1419,7 @@ document.addEventListener('DOMContentLoaded', function () {
 document.addEventListener('DOMContentLoaded', function () {
     document.querySelectorAll('#bloc_pc .onglet_boite:first-child').forEach(function (onglet) {
         const img = onglet.querySelector('img');
-        img.src = '/_themes/puzzlethemes/fr/images/square-on.svg';
+        img.src = '/images/square-on.svg';
     });
 });
 
@@ -1438,11 +1438,11 @@ document.querySelectorAll('#bloc_pc .onglet_boite').forEach(function (onglet) {
 function selectOnglet(onglet) {
     document.querySelectorAll('#bloc_pc .onglet_boite').forEach(function (onglet) {
         const img = onglet.querySelector('img');
-        img.src = '/_themes/puzzlethemes/fr/images/square-off.svg';
+        img.src = '/images/square-off.svg';
     });
 
     const img = onglet.querySelector('img');
-    img.src = '/_themes/puzzlethemes/fr/images/square-on.svg';
+    img.src = '/images/square-on.svg';
 }
 
 let currentIndex = 0;
@@ -1606,7 +1606,7 @@ $(document).ready(function () {
             alert("Aucun produit sélectionné.");
             return;
         }
-
+    
         $('<div id="fancybox-loading" style="width:400px"><span>' + local_wait + '</span></div>').appendTo('body');
         $.get('/websvc/maliste.ws.php', {
             move: 1,
@@ -1618,7 +1618,7 @@ $(document).ready(function () {
             document.location.href = '/clients/?pg=maliste';
         });
     });
-
+    
 });
 
 
@@ -1716,8 +1716,8 @@ if (currentUrl.includes("/besoin-aide")) {
 
         const searchInput = document.getElementById('searchInput');
         const searchAide = document.querySelector('.search-aide');
-
-
+        
+        
 
         document.getElementById('searchButton').addEventListener('click', performSearch);
         document.getElementById('searchInput').addEventListener('keydown', function (event) {
@@ -1935,27 +1935,27 @@ if (currentUrl.includes("/pieces-de-puzzle-manquantes")) {
         var backButton = document.querySelector('.back-missing-puzzle-pieces');
         var blocExMs = document.querySelectorAll('.bloc-ex-m');
         var arianFil = document.querySelector('.arian-marq');
-
+      
         function hideAllBlocs() {
           blocExMs.forEach(function(bloc) {
             bloc.style.display = 'none';
           });
         }
-
+      
         function showCubMarqs() {
           allCubMarqs.forEach(function(allCubMarqs) {
             allCubMarqs.classList.add('show');
           });
           arianFil.style.display = 'block'
         }
-
+      
         function hideCubMarqs() {
           allCubMarqs.forEach(function(allCubMarqs) {
             allCubMarqs.classList.remove('show');
           });
           arianFil.style.display = 'none'
         }
-
+      
         cubMarqs.forEach(function(cubMarq) {
           cubMarq.addEventListener('click', function() {
             hideAllBlocs();
@@ -1969,7 +1969,7 @@ if (currentUrl.includes("/pieces-de-puzzle-manquantes")) {
             backButton.style.display = 'flex';
           });
         });
-
+      
         backButton.addEventListener('click', function(event) {
           event.preventDefault();
           hideAllBlocs();
@@ -1977,7 +1977,7 @@ if (currentUrl.includes("/pieces-de-puzzle-manquantes")) {
           backButton.style.display = 'none';
         });
       });
-
+      
 }
 let lastFocusedElement;
 if (document.getElementById('cartLink')) {
@@ -2130,7 +2130,7 @@ $('.slider-image-produit').on('click', '.slick-active img', function() {
 
 document.addEventListener("DOMContentLoaded", function() {
     if (window.location.pathname === "/clients/") {
-        var wishlistLink = document.querySelector('.logo-coeur');
+        var wishlistLink = document.querySelector('.logo-coeur');   
         var userLink = document.querySelector('.logo-user')
         if (window.location.search === "?pg=maliste") {
             wishlistLink.classList.add("wishlist-active");
@@ -2184,7 +2184,7 @@ function setActiveVignette(element, srcZoom700, srcZoom, key) {
     $('#iprincipale').attr('src', srcZoom700);
     $('#iprincipale').data('zoom-image', srcZoom);
     $('#iprincipale').attr('data-current-index', key);
-    call_zoom(srcZoom);
+    //call_zoom(srcZoom);
 
     // Retirer la classe active de toutes les vignettes
     $('.vignette').removeClass('active');
@@ -2369,7 +2369,7 @@ function restoreSelections() {
     if (acceptSupplierMailInfo) {
         $('input[name="acceptSupplierMailInfo"][value="' + acceptSupplierMailInfo + '"]').prop('checked', true);
     }
-
+    
     validateForm();
 }
 
@@ -2390,7 +2390,7 @@ $(document).on('click','input[name="mode_livraison"]',function() {
         saveModeLivraison(modeLivraison);
     }
 
-    validateForm();
+    validateForm(); 
 });
 
 $('input[name=acceptSupplierMailInfo]').on('change', function() {
@@ -2400,7 +2400,7 @@ $('input[name=acceptSupplierMailInfo]').on('change', function() {
     } else {
         localStorage.removeItem('acceptSupplierMailInfo');
     }
-    validateForm();
+    validateForm(); 
 });
 
 
@@ -2408,7 +2408,7 @@ $('input[name=acceptSupplierMailInfo]').on('change', function() {
 $('input[name=mode_livraison]:not(.POI_radio)').on('change', function() {
     var modeLivraison = $(this).val();
     saveModeLivraison(modeLivraison);
-    validateForm();
+    validateForm(); 
 });
 
 $(document).on('focus', 'input[name="mode_livraison"], input[name="z_mode_livraison"], input[name="acceptSupplierMailInfo"]', function() {
@@ -2495,9 +2495,9 @@ document.addEventListener('DOMContentLoaded', function() {
 				cartSummary.style.top = `${initialTop}px`;
 				cartSummary.style.width = '365.25px';
 			}
-		}
+		} 
 	}
-
+	
 	const recapPanW = document.querySelector('.recap-pan-w');
 	const cartItems = document.querySelectorAll('.cart-items .cart-item');
 	const cartSummary = document.querySelector('.content-recap-panier');
@@ -2519,7 +2519,7 @@ function addFocusBlurListeners(input) {
   input.addEventListener('focus', (event) => {
     event.target.classList.add('focused');
   });
-
+  
   input.addEventListener('blur', (event) => {
     event.target.classList.remove('focused');
   });
@@ -2547,7 +2547,7 @@ function updatePriceDisplay(newPrice) {
     const totalProduitPort = document.getElementById('total-produit-port');
     const initialTotal = parseFloat(document.getElementById('subtotal-display').getAttribute('data-subtotal-display'));
     const formattedNewPrice = parseFloat(newPrice.replace(',', '.'));
-
+    
     if (priceDisplay && totalProduitPort) {
         priceDisplay.innerHTML = formatPrice(formattedNewPrice);
         totalProduitPort.innerHTML = formatPrice(initialTotal + formattedNewPrice);
@@ -2576,7 +2576,7 @@ document.addEventListener('DOMContentLoaded', (event) => {
         input.addEventListener('change', (event) => {
             const selectedInput = event.target;
             const newPrice = selectedInput.getAttribute('data-price-ml');
-
+           
             if (newPrice) {
                 updatePriceDisplay(newPrice);
                 if (firstChange) {
@@ -2590,7 +2590,7 @@ document.addEventListener('DOMContentLoaded', (event) => {
 
 $(document).ready(function() {
     $('#newsletter-form').on('submit', function(e) {
-        e.preventDefault();
+        e.preventDefault(); 
         var email = $('input[name="nl_email"]').val();
         if (email === '') {
             $('#error-message').show();
@@ -2758,7 +2758,7 @@ function setTabindex(container, value) {
         if (value === -1) {
             element.setAttribute('tabindex', '-1');
         } else {
-            element.removeAttribute('tabindex');
+            element.removeAttribute('tabindex');                
         }
     });
 }
@@ -2807,7 +2807,7 @@ document.addEventListener('DOMContentLoaded', function() {
                     currentIndex = -1;
                 }
             }
-
+    
             if (puzzleList.style.display === 'block') {
                 if (e.key === 'ArrowDown') {
                     e.preventDefault();
@@ -2846,7 +2846,7 @@ togglePasswordIcons.forEach(icon => {
     passwordInput.setAttribute('type', type);
 
     const currentSrc = this.getAttribute('src');
-    this.setAttribute('src', currentSrc === '/_themes/puzzlethemes/fr/images/eye-empty.svg' ? '/_themes/puzzlethemes/fr/images/eye-filled.svg' : '/_themes/puzzlethemes/fr/images/eye-empty.svg');
+    this.setAttribute('src', currentSrc === '/images/eye-empty.svg' ? '/images/eye-filled.svg' : '/images/eye-empty.svg');
   });
 });
 

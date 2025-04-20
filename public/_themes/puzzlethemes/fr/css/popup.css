@@ -17,7 +17,7 @@ a{ color:#444444; font-size:13px; text-decoration : none }
 .titre_envoi{ color:#ee6c03;font-size:12px; }
 
 /* POPUP ACCUEIL ET FOOTER ------ LIVRAISON OFFERTE */
-#LivraisonOfferte { width:500px; height:200px; background:url(/_themes/puzzlethemes/fr/images/design_elements/livraison_offerte_homepage.gif) no-repeat; }
+#LivraisonOfferte { width:500px; height:200px; background:url(/images/design_elements/livraison_offerte_homepage.gif) no-repeat; }
 #LivraisonOfferte .PartTxt { display:block; width:300px; height:60px; padding:100px 0 0 190px; font-size:14px; color:#ee6c03; font-weight:normal; text-align:center; }
 #LivraisonOfferte .PartTxt2 { margin:0; padding:0; font-size:12px; color:#999999; font-weight:normal; text-align:center; }
 
@@ -28,7 +28,7 @@ a{ color:#444444; font-size:13px; text-decoration : none }
 #PaiementCheques .PartTxt2 { display:block; height:auto; padding:20px 20px 0 20px; font-size:12px; color:#666666; }
 
 /* POPUP FOOTER ------ MODES DE PAIEMENTS */
-#Secure{ width:500px; height:640px; background:url(/_themes/puzzlethemes/fr/images/design_elements/secure.gif) no-repeat; }
+#Secure{ width:500px; height:640px; background:url(/images/design_elements/secure.gif) no-repeat; }
 #Secure .PartTxt { display:block; width:450px; height:60px; padding:120px 0 0 25px; font-family:Arial, Helvetica, sans-serif; font-size:14px; color:#666666; font-weight:normal; text-align:center; }
 #Secure .PartTxt2 { display:block; width:300px; height:140px; padding:90px 0 0 175px; font-family:Arial, Helvetica, sans-serif; font-size:12px; color:#666666; font-weight:bold; text-align:left; }
 #Secure .PartTxt3 { display:block; width:450px; height:100px; padding:30px 0 0 25px; font-family:Arial, Helvetica, sans-serif; font-size:14px; color:#666666; font-weight:normal; text-align:center; }
@@ -39,7 +39,7 @@ a{ color:#444444; font-size:13px; text-decoration : none }
 #Telephone .Titre{ color:#ee6c03; font-size:24px; }
 .orange{color:#f60}
 /* POPUP PANIER ------ CONDITIONS GENERALES DE VENTES */
-#cgv{width:600px;float:left; margin:20px;}
+#cgv{width:600px;float:left; margin:20px;} 
 .h1infos{ font-size:20px; color:#ee6c03; font-weight:bold; margin:0; padding:0;}
 .h2infos{ font-size:14px; color:#ee6c03; font-weight:bold; margin:20px 0px; padding:0; width:700px;}
 .h3infos{ font-size:12px; color:#ee6c03; font-weight:bold; margin:0; padding:0;}

@@ -1,0 +1,21 @@
+{
+  "runner.bootstrap": "./vendor/autoload.php",
+  "runner.path": "benchmark",
+  "runner.retry_threshold": 5,
+  "runner.progress": "dots",
+  "report.generators": {
+    "matcher": {
+      "generator": "expression",
+      "cols": {
+        "benchmark": null,
+        "subject": null,
+        "revs": null,
+        "its": null,
+        "mem_peak": null,
+        "mode": null,
+        "rstdev": null
+      }
+    }
+  },
+  "storage.xml_storage_path": "./var/phpbench"
+}

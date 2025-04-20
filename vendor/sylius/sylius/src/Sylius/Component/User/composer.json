@@ -1,0 +1,81 @@
+{
+    "name": "sylius/user",
+    "type": "library",
+    "description": "User handling for PHP applications.",
+    "keywords": [
+        "user",
+        "registration",
+        "login",
+        "groups"
+    ],
+    "homepage": "https://sylius.com",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Paweł Jędrzejewski",
+            "homepage": "https://pjedrzejewski.com"
+        },
+        {
+            "name": "Michał Marcinkowski",
+            "email": "michal.marcinkowski@lakion.com"
+        },
+        {
+            "name": "Łukasz Chruściel",
+            "email": "lukasz.chrusciel@lakion.com"
+        },
+        {
+            "name": "Sylius project",
+            "homepage": "https://sylius.com"
+        },
+        {
+            "name": "Community contributions",
+            "homepage": "https://github.com/Sylius/Sylius/contributors"
+        }
+    ],
+    "require": {
+        "php": "^8.2",
+        "doctrine/collections": "^2.2",
+        "sylius/resource": "^1.12",
+        "symfony/polyfill-mbstring": "^1.31",
+        "symfony/security-core": "^6.4 || ^7.1"
+    },
+    "require-dev": {
+        "phpspec/phpspec": "^7.5",
+        "phpspec/prophecy-phpunit": "^2.2",
+        "phpunit/phpunit": "^9.5"
+    },
+    "suggest": {
+        "ext-mbstring": "For better performance than using Symfony Polyfill Component"
+    },
+    "config": {
+        "allow-plugins": {
+            "symfony/flex": true
+        }
+    },
+    "extra": {
+        "branch-alias": {
+            "dev-main": "2.0-dev"
+        },
+        "symfony": {
+            "require": "^7.1"
+        }
+    },
+    "autoload": {
+        "psr-4": {
+            "Sylius\\Component\\User\\": ""
+        }
+    },
+    "autoload-dev": {
+        "psr-4": {
+            "Sylius\\Component\\User\\spec\\": "spec/"
+        }
+    },
+    "repositories": [
+        {
+            "type": "path",
+            "url": "../../*/*"
+        }
+    ],
+    "minimum-stability": "dev",
+    "prefer-stable": true
+}

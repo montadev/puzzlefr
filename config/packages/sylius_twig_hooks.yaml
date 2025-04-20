@@ -1,0 +1,94 @@
+sylius_twig_hooks:
+    hooks:
+        'sylius_shop.product.show.content.info.summary':
+            stock_categorie:
+                template: 'shop/hooks/product/stockCategorie.html.twig'
+                priority: 600
+            attribute_listing:
+                template: 'shop/hooks/product/attributelisting.html.twig'
+                priority: 150    
+            header:
+                template: '@SyliusShop/product/show/content/info/summary/header.html.twig'
+                priority: 500
+            average_rating:
+                template: '@SyliusShop/product/show/content/info/summary/average_rating.html.twig'
+                priority: 400
+                enabled: false 
+            prices:
+                template: '@SyliusShop/product/show/content/info/summary/prices.html.twig'
+                priority: 300
+            catalog_promotions:
+                template: '@SyliusShop/product/show/content/info/summary/catalog_promotions.html.twig'
+                priority: 200
+            add_to_cart:
+                component: 'sylius_shop:product:add_to_cart_form'
+                props:
+                    product: '@=_context.product'
+                    template: '@SyliusShop/product/show/content/info/summary/add_to_cart.html.twig'
+                priority: 100
+            short_description:
+                template: '@SyliusShop/product/show/content/info/summary/short_description.html.twig'
+                priority: 0
+                enabled: false 
+            livraison:
+                template: 'shop/hooks/product/livraison.html.twig'
+                priority: -10
+                
+
+
+        # sylius_shop.base.header.content.logo:
+        #     content:
+        #         template: 'header/content/logo/content/logo.html.twig'
+        # 'sylius_shop.base.header':
+        #     top_bar:
+        #         template: '@SyliusShop/shared/layout/base/header/top_bar.html.twig'
+        #         priority: 300
+        #         enabled: false 
+
+        'sylius_shop.base.header.content':
+            logo:
+                template: "@SyliusShop/shared/layout/base/header/content/logo.html.twig"
+                priority: 300
+            security:
+                template: "@SyliusShop/shared/layout/base/header/content/security.html.twig"
+                priority: 200
+            cart:
+                component: 'sylius_shop:cart:widget'
+                props:
+                    template: '@SyliusShop/shared/components/header/cart.html.twig'
+                priority: 100
+                enabled: true   
+            taxon_hamburger:
+                template: "@SyliusShop/shared/layout/base/header/content/taxon_hamburger.html.twig"
+                priority: 0  
+                enabled: false        
+
+
+        'sylius_shop.product.show.content.info':
+            summary:
+                component: 'sylius_shop:product:summary'
+                props:
+                    product: '@=_context.product'
+                    template: '@SyliusShop/product/show/content/info/summary.html.twig'
+                priority: 100
+            overview:
+                template: '@SyliusShop/product/show/content/info/overview.html.twig'
+                priority: 0 
+                enabled: false 
+        'sylius_shop.product.show.content.info.overview.images':
+            thumbnails:
+                template: '@SyliusShop/product/show/content/info/overview/images/thumbnails.html.twig'
+                priority: 0
+            main_image:
+                template: '@SyliusShop/product/show/content/info/overview/images/main_image.html.twig'
+                priority: 100  
+        'sylius_shop.product.show.content.info.overview':
+            images:
+                template: '@SyliusShop/product/show/content/info/overview/images.html.twig'
+                priority: 100
+            accordion:
+                template: '@SyliusShop/product/show/content/info/overview/accordion.html.twig'
+                priority: 0  
+                enabled: false 
+                          
+                               

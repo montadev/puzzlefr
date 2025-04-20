@@ -9,7 +9,7 @@
 @media(min-width:768px) and (max-width:979px){
 .fermeture-ordi { display:none}
 .fermeture-tablette{ display:block}
-.fermeture-tel{ display:none}
+.fermeture-tel{ display:none}	
 }
 
 @media(min-width:0px) and (max-width:768px){
@@ -840,8 +840,8 @@ table td[class*="span"],table th[class*="span"],.row-fluid table td[class*="span
 .table-hover tbody tr.error:hover>td{background-color:#ebcccc;}
 .table-hover tbody tr.warning:hover>td{background-color:#faf2cc;}
 .table-hover tbody tr.info:hover>td{background-color:#c4e3f3;}
-[class^="icon-"],[class*=" icon-"]{background-image:url("/_themes/puzzlethemes/fr/images/glyphicons-halflings.png");background-position:14px 14px;background-repeat:no-repeat;display:inline-block;height:14px;line-height:14px;margin-right:.3em;margin-top:1px;vertical-align:text-top;width:14px;}
-.icon-white,.nav-pills>.active>a>[class^="icon-"],.nav-pills>.active>a>[class*=" icon-"],.nav-list>.active>a>[class^="icon-"],.nav-list>.active>a>[class*=" icon-"],.navbar-inverse .nav>.active>a>[class^="icon-"],.navbar-inverse .nav>.active>a>[class*=" icon-"],.dropdown-menu>li>a:hover>[class^="icon-"],.dropdown-menu>li>a:focus>[class^="icon-"],.dropdown-menu>li>a:hover>[class*=" icon-"],.dropdown-menu>li>a:focus>[class*=" icon-"],.dropdown-menu>.active>a>[class^="icon-"],.dropdown-menu>.active>a>[class*=" icon-"],.dropdown-submenu:hover>a>[class^="icon-"],.dropdown-submenu:focus>a>[class^="icon-"],.dropdown-submenu:hover>a>[class*=" icon-"],.dropdown-submenu:focus>a>[class*=" icon-"]{background-image:url("/_themes/puzzlethemes/fr/images/glyphicons-halflings.png");}
+[class^="icon-"],[class*=" icon-"]{background-image:url("/img/glyphicons-halflings.png");background-position:14px 14px;background-repeat:no-repeat;display:inline-block;height:14px;line-height:14px;margin-right:.3em;margin-top:1px;vertical-align:text-top;width:14px;}
+.icon-white,.nav-pills>.active>a>[class^="icon-"],.nav-pills>.active>a>[class*=" icon-"],.nav-list>.active>a>[class^="icon-"],.nav-list>.active>a>[class*=" icon-"],.navbar-inverse .nav>.active>a>[class^="icon-"],.navbar-inverse .nav>.active>a>[class*=" icon-"],.dropdown-menu>li>a:hover>[class^="icon-"],.dropdown-menu>li>a:focus>[class^="icon-"],.dropdown-menu>li>a:hover>[class*=" icon-"],.dropdown-menu>li>a:focus>[class*=" icon-"],.dropdown-menu>.active>a>[class^="icon-"],.dropdown-menu>.active>a>[class*=" icon-"],.dropdown-submenu:hover>a>[class^="icon-"],.dropdown-submenu:focus>a>[class^="icon-"],.dropdown-submenu:hover>a>[class*=" icon-"],.dropdown-submenu:focus>a>[class*=" icon-"]{background-image:url("/img/glyphicons-halflings.png");}
 @font-face{font-family:'Glyphicons Halflings';src:url('../fonts/glyphicons-halflings-regular.eot');src:url('../fonts/glyphicons-halflings-regular.eot?#iefix') format('embedded-opentype'), url('../fonts/glyphicons-halflings-regular.woff2') format('woff2'), url('../fonts/glyphicons-halflings-regular.woff') format('woff'), url('../fonts/glyphicons-halflings-regular.ttf') format('truetype'), url('../fonts/glyphicons-halflings-regular.svg#glyphicons_halflingsregular') format('svg');}
 .glyphicon{z-index:3;display:inline-block;font-family:'Glyphicons Halflings';font-style:normal;font-weight:normal;line-height:1;margin-top:10px;-webkit-font-smoothing:antialiased;-moz-osx-font-smoothing:grayscale;}
 .glyphicon_spec{position:relative;top:-22px;display:inline-block;font-family:'Glyphicons Halflings';font-style:normal;font-weight:normal;line-height:1;-webkit-font-smoothing:antialiased;-moz-osx-font-smoothing:grayscale;}
@@ -1731,7 +1731,7 @@ input, button, select, textarea{font-family: Inter, Helvetica, sans-serif;paddin
 .container_filtre{padding: 24px 32px;border-bottom: 1px solid #EFEFEF;display: flex;flex-direction: column;gap: 16px;}
 .container_filtre div.atr_couleur:hover{cursor:pointer;}
 .container_filtre div.atr_couleur{border:solid 1px #ccc;float:left;margin:4px;width:26px;height:24px;}
-.container_filtre .ui-slider-handle, .container_filtre_mobile .ui-slider-handle{background:url(/_themes/puzzlethemes/fr/images/filtre_left/defilement.svg) no-repeat !important;width:18px !important;height:24px !important;border:0 !important;}
+.container_filtre .ui-slider-handle, .container_filtre_mobile .ui-slider-handle{background:url(/images/filtre_left/defilement.svg) no-repeat !important;width:18px !important;height:24px !important;border:0 !important;}
 .container_filtre input{border:0px;padding:4px;width:140px;font-size:12px;font-weight:bold;color:#666;}
 .container_filtre a{clear:both;}
 .container_filtre img{border:0px;}
@@ -1885,13 +1885,13 @@ input.span1,textarea.span1,.uneditable-input.span1{width:56px;}
 
 
 @media(min-width:800px) and (max-width:1200px){
-.navbar .nav>li>a{color:#333;float:none;padding:5px;text-decoration:none;}
+.navbar .nav>li>a{color:#333;float:none;padding:5px;text-decoration:none;}	
 }
 
 
 
 @media(min-width:768px) and (max-width:979px){
-
+	
 
 .row{zoom:1;}
 .row:before,.row:after{content:"";display:table;line-height:0;}
@@ -2296,7 +2296,7 @@ td.hidden-lg{display:none !important;}
 	background-color: #FFF7EC;
 	border:1px solid #FF780F;
 	border-radius: 3px;
-	color: #9E360E;border-radius: 6px 0px 0px 6px;
+	color: #9E360E;border-radius: 6px 0px 0px 6px; 
 
 }
 .alert-minimalist > [data-notify="icon"] {
